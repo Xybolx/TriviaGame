@@ -8,7 +8,7 @@ body {
 body {
   text-align: center;
   font-family: voltaire, sans-serif;
-  color: white;
+  color: yellow;
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
   
 }
@@ -19,7 +19,7 @@ body {
   box-sizing: border-box;
   padding: 5% 0;
   margin: 5% auto;
-  background-image: url("../images/wrapper-bg.jpg");
+  
   
 
 }
@@ -27,6 +27,7 @@ body {
 #sub-wrapper {
   position: relative;
   top: 20%;
+  
 }
 
 button {

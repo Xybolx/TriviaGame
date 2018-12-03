@@ -35,16 +35,16 @@ var questions = [{
   correctAnswer: "Khan"
 }];
 
-// Variable that will hold the setInterval
 document.getElementById('ship').style.cssText = "display: none";
 
+// Variable that will hold the setInterval
 var timer;
 
 var game = {
 
   correct: 0,
   incorrect: 0,
-  counter: 100,
+  counter: 120,
 
   countdown: function() {
     game.counter--;
@@ -61,6 +61,10 @@ var game = {
     
     
        
+    }
+    if (game.counter === 100){
+      $('audio#loseSound')[0].play();
+
     }
   },
 
@@ -157,6 +161,7 @@ var game = {
     });
 
     this.result();
+    
 
   },
 
