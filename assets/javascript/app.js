@@ -44,13 +44,16 @@ var game = {
 
   correct: 0,
   incorrect: 0,
-  counter: 120,
+  counter: 100,
 
   countdown: function() {
     game.counter--;
     $("#counter-number").html(game.counter);
     if (game.counter === 0) {
       console.log("TIME UP");
+      document.getElementById("ship").style.cssText = "display: block";
+      $('#ship').animate({height: '500px'});
+      $('#ship').animate({height: '0px'});
       $('audio#loseSound')[0].play();
       game.done();
       
@@ -186,5 +189,8 @@ $(document).on("click", "#start", function() {
 
 $(document).on("click", "#done", function() {
   game.done();
+  document.getElementById("ship").style.cssText = "display: block";
+  $('#ship').animate({height: '500px'});
+  $('#ship').animate({height: '0px'});
   $('audio#doneSound')[0].play()
 });

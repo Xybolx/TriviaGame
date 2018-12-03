@@ -36,7 +36,7 @@ button {
   margin: 10px auto 0;
   font-size: 42px;
   cursor: url("../images/pointer3.png"), pointer;
-  background: transparent;
+  background: white;
   border: 0;
 }
 
@@ -49,6 +49,7 @@ h1 {
   text-shadow: 2px 3px blue;
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
   font-style: italic;
+  margin: auto;
   
 
 }
@@ -56,10 +57,10 @@ h1 {
 header{
     background-image: url("https://cdn1-www.superherohype.com/assets/uploads/2013/12/file_180663_0_star-trek-logo-header.jpg");
     background-size: contain;
-    background-repeat: round;
+    background-repeat: no-repeat;
     background-position: top;
     color: transparent;
-    font-size: 3.0em;
+    font-size: 5.0em;
 }
 
 
@@ -77,8 +78,13 @@ h3 {
 
 #start {
   margin-top: 10%;
-  background: pink;
+  background-image: url("../images/pattern.png");
   border: 2px solid blue;
+  color: white;
+}
+
+#quiz-area {
+  text-shadow: 2px 2px blue;
 }
 
 #quiz-area h2 {
@@ -87,6 +93,6 @@ h3 {
 }
 
 button:hover {
-  background: pink;
+  background: white;
   border: 2px solid blue;
 }
