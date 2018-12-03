@@ -62,8 +62,10 @@ var game = {
     
        
     }
-    if (game.counter === 100){
-      $('audio#loseSound')[0].play();
+    if (game.counter === 30){
+      $('#counter-number').animate({fontSize: '10em'},"slow");
+      $('#counter-number').animate({fontSize: '1em'},"slow");
+      $('audio#warnSound')[0].play();
 
     }
   },
@@ -173,7 +175,7 @@ var game = {
     $('audio#startSound')[0].play();
 
 
-    card.html("<h2>All Done!</h2>");
+    card.html("<h2>Your Results:</h2>");
     card.append("<h3>Correct Answers: " + this.correct + "</h3>");
     card.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
     card.append("<h3>Unanswered: " + (questions.length - (this.incorrect + this.correct)) + "</h3>");
