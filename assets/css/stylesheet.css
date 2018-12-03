@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Voltaire');
 html,
 body {
   height: 100%;
+  
 }
 
 body {
   text-align: center;
-  background-image: url("../images/tacky.jpg");
+  font-family: voltaire, sans-serif;
+  color: white;
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
+  
 }
 
 #wrapper {
@@ -14,7 +19,8 @@ body {
   box-sizing: border-box;
   padding: 5% 0;
   margin: 5% auto;
-  background-color: #fff17a;
+  
+
 }
 
 #sub-wrapper {
@@ -28,27 +34,44 @@ button {
   height: 100px;
   margin: 10px auto 0;
   font-size: 42px;
-  cursor: pointer;
+  cursor: url("../images/pointer3.png"), pointer;
   background: transparent;
   border: 0;
 }
 
 h1 {
   margin-bottom: 50px;
-  font-family: Geo, sans-serif;
-  font-size: 6.5em;
+  font-family: voltaire, sans-serif;
+  font-size: 5.5em;
   font-weight: bold;
-  color: blue;
+  color: rgb(253, 243, 98);
+  text-shadow: 2px 3px blue;
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
+  font-style: italic;
+  
+
 }
+
+header{
+    background-image: url("https://cdn1-www.superherohype.com/assets/uploads/2013/12/file_180663_0_star-trek-logo-header.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    color: transparent;
+    font-size: 6.5em;
+}
+
 
 h2 {
   margin-bottom: 25px;
   font-size: 35px;
+  text-shadow: 2px 3px blue;
 }
 
 h3 {
   margin-bottom: 10px;
   font-size: 25px;
+  text-shadow: 2px 3px blue;
 }
 
 #start {
@@ -59,6 +82,7 @@ h3 {
 
 #quiz-area h2 {
   margin-top: 50px;
+  text-shadow: 2px 2px blue;
 }
 
 button:hover {

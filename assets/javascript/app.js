@@ -166,6 +166,7 @@ var game = {
 
 $(document).on("click", "#start", function() {
   game.start();
+  $('audio#startSound')[0].play(); 
 });
 
 
