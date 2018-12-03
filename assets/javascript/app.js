@@ -36,6 +36,8 @@ var questions = [{
 }];
 
 // Variable that will hold the setInterval
+document.getElementById('ship').style.cssText = "display: none";
+
 var timer;
 
 var game = {
@@ -49,7 +51,13 @@ var game = {
     $("#counter-number").html(game.counter);
     if (game.counter === 0) {
       console.log("TIME UP");
+      $('audio#loseSound')[0].play();
       game.done();
+      
+    
+    
+    
+       
     }
   },
 
@@ -154,11 +162,14 @@ var game = {
     clearInterval(timer);
 
     $("#sub-wrapper h2").remove();
+    $('audio#startSound')[0].play();
+
 
     card.html("<h2>All Done!</h2>");
     card.append("<h3>Correct Answers: " + this.correct + "</h3>");
     card.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
     card.append("<h3>Unanswered: " + (questions.length - (this.incorrect + this.correct)) + "</h3>");
+    
   }
 };
 
@@ -166,10 +177,14 @@ var game = {
 
 $(document).on("click", "#start", function() {
   game.start();
-  $('audio#startSound')[0].play(); 
+  document.getElementById("ship").style.cssText = "display: block";
+  $('#ship').animate({height: '500px'});
+  $('#ship').animate({height: '0px'});
+  $('audio#startSound')[0].play() 
 });
 
 
 $(document).on("click", "#done", function() {
   game.done();
+  $('audio#doneSound')[0].play()
 });

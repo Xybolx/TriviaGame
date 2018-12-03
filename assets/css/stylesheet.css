@@ -19,6 +19,7 @@ body {
   box-sizing: border-box;
   padding: 5% 0;
   margin: 5% auto;
+  background-image: url("../images/wrapper-bg.jpg");
   
 
 }
@@ -55,10 +56,10 @@ h1 {
 header{
     background-image: url("https://cdn1-www.superherohype.com/assets/uploads/2013/12/file_180663_0_star-trek-logo-header.jpg");
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-position: top;
     color: transparent;
-    font-size: 6.5em;
+    font-size: 3.0em;
 }
 
 
