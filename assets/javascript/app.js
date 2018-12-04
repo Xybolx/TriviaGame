@@ -66,7 +66,7 @@ var game = {
       document.getElementById("ship").style.cssText = "display: block";
       $('#ship').animate({height: '500px'});
       $('#ship').animate({height: '0px'});
-      $('audio#loseSound')[0].play();
+      $('audio#warnSound')[0].play();
       game.timeUp();
       
     
@@ -122,6 +122,7 @@ var game = {
 
 
   results: function() {
+    $("audio#doneSound")[0].play();
 
     clearInterval(timer);
 
