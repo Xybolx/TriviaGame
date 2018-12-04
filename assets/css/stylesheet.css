@@ -36,8 +36,9 @@ button {
   height: 100px;
   margin: 10px auto 0;
   font-size: 42px;
-  cursor: url("../images/pointer3.png"), pointer;
-  background: white;
+  color: white;
+  cursor: pointer;
+  background-image: url("../images/pattern.png");
   border: 0;
 }
 
@@ -85,7 +86,3 @@ h3 {
   text-shadow: 2px 2px blue;
 }
 
-button:hover {
-  background: white;
-  border: 2px solid blue;
-}
