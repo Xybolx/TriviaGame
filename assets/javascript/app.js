@@ -26,7 +26,7 @@ var questions = [{
   question: "Which of these races does not belong to the Federation?",
   answers: ["The Andorians", "The Romulans", "The Vulcans", "The Tellarites"],
   correctAnswer: "The Romulans",
-  images:"assets/images/romulan.gif"
+  image:"assets/images/romulan2.gif"
 }, {
   question: "What class of starship does the USS Enterprise belong to?",
   answers: ["Constitution Class", "Galaxy Class", "Freighter Class", "Full Stack Flex Class"],
@@ -108,7 +108,7 @@ var game = {
 
     $("#counter-number").html(game.counter);
 
-    card.html("<h2>Out of Time!</h2>");
+    card.html("<h2>What do we do?!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[this.currentQuestion].correctAnswer);
     card.append("<img src='" + questions[this.currentQuestion].image + "' />");
 
@@ -126,7 +126,7 @@ var game = {
 
     clearInterval(timer);
 
-    card.html("<h2>All done, heres how you did!</h2>");
+    card.html("<h2>You mind telling me what this is all about, mister?!</h2>");
 
     $("#counter-number").text(game.counter);
 
@@ -149,12 +149,13 @@ var game = {
 
 
   answeredIncorrectly: function() {
+    $("audio#wrongSound")[0].play();
 
     game.incorrect++;
 
     clearInterval(timer);
 
-    card.html("<h2>Nope!</h2>");
+    card.html("<h2>Inaccurate! Inaccurate!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
     card.append("<img src='"+ questions[game.currentQuestion].image + "' />");
 
@@ -168,12 +169,13 @@ var game = {
 
 
   answeredCorrectly: function() {
+    $("audio#winSound")[0].play();
 
     clearInterval(timer);
 
     game.correct++;
 
-    card.html("<h2>Correct!</h2>");
+    card.html("<h2>Verified!</h2>");
     card.append("<img src='" + questions[game.currentQuestion].image + "' />");
 
     if (game.currentQuestion === questions.length - 1) {
@@ -255,10 +257,12 @@ $(document).on("click", "#start", function() {
   $('#ship').animate({height: '0px'});
   $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>");
   game.loadQuestion();
+  $('audio#bgSound')[0].play();
 
 
   $('audio#startSound')[0].play() 
-});
+}); 
+
 
 
 

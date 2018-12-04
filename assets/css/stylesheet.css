@@ -33,13 +33,13 @@ body {
 button {
   display: block;
   width: 400px;
-  height: 100px;
+  height: 95px;
   margin: 10px auto 0;
   font-size: 42px;
   color: white;
   cursor: pointer;
   background-image: url("../images/pattern.png");
-  border: 0;
+  border: 2px solid blue;
 }
 
 h1 {
