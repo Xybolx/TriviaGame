@@ -157,7 +157,7 @@ var game = {
 
     card.html("<h2>Inaccurate! Inaccurate!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
-    card.append("<img src='"+ questions[game.currentQuestion].image + "' />");
+    card.append("<img class='test' src='"+ questions[game.currentQuestion].image + "' />");
 
     if (game.currentQuestion === questions.length - 1) {
       setTimeout(game.results, 6 * 1000);
@@ -171,22 +171,29 @@ var game = {
   answeredCorrectly: function() {
     $("audio#winSound")[0].play();
     document.getElementById("ship").style.cssText = "display: block";
-    $('#sub-wrapper').animate({opacity: '0'}, "slow");
-    $('#sub-wrapper').animate({opacity: '0.3'});
-    $('#sub-wrapper').animate({opacity: '0'}, "slow");
-    $('#sub-wrapper').animate({opacity: '0.2'});
-      $('#sub-wrapper').animate({opacity: '0'}, "slow");
-      $('#sub-wrapper').animate({opacity: '100'});
-      
-      
-     
-
+    // $('#sub-wrapper').animate({opacity: '0'}, "slow");
+    // $('#sub-wrapper').animate({opacity: '0.3'});
+    // $('#sub-wrapper').animate({opacity: '0'}, "slow");
+    // $('#sub-wrapper').animate({opacity: '0.2'});
+    //   $('#sub-wrapper').animate({opacity: '0'}, "slow");
+    //   $('#sub-wrapper').animate({opacity: '100'});
+    
+    
+    
+    
     clearInterval(timer);
-
+    
     game.correct++;
-
+    
+    
     card.html("<h2>Verified!</h2>");
-    card.append("<img src='" + questions[game.currentQuestion].image + "' />");
+    card.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
+    $('#test').animate({opacity: '0'}, "slow");
+    $('#test').animate({opacity: '0.3'});
+    $('#test').animate({opacity: '0'}, "slow");
+    $('#test').animate({opacity: '0.2'});
+      $('#test').animate({opacity: '0'}, "slow");
+      $('#test').animate({opacity: '100'});
 
     if (game.currentQuestion === questions.length - 1) {
       setTimeout(game.results, 6 * 1000);
