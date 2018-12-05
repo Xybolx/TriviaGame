@@ -59,7 +59,7 @@ h1 {
 
 
 h2 {
-  margin-bottom: 25px;
+  
   font-size: 35px;
   text-shadow: 2px 3px blue;
 }
@@ -78,6 +78,9 @@ h3 {
 }
 
 #quiz-area {
+  background-image: url("../images/mat.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
   text-shadow: 2px 2px blue;
 }
 
