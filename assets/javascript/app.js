@@ -170,6 +170,15 @@ var game = {
 
   answeredCorrectly: function() {
     $("audio#winSound")[0].play();
+    $('#sub-wrapper').animate({opacity: '0'}, "slow");
+    $('#sub-wrapper').animate({opacity: '0.3'});
+    $('#sub-wrapper').animate({opacity: '0'}, "slow");
+    $('#sub-wrapper').animate({opacity: '0.2'});
+      $('#sub-wrapper').animate({opacity: '0.3'}, "slow");
+      $('#sub-wrapper').animate({opacity: '100'});
+      
+      
+     
 
     clearInterval(timer);
 
@@ -233,17 +242,17 @@ var game = {
 $(document).on("click", "#start-over", function() {
   game.reset();
   document.getElementById("ship").style.cssText = "display: block";
-  $('#ship').animate({height: '500px'});
-  $('#ship').animate({height: '0px'});
+  $('#ship').animate({height: '500px'}, "slow");
+  $('#ship').animate({height: '0px'}, "slow");
   $('audio#startSound')[0].play() 
 });
   
 $(document).on("click", ".answer-button", function(e) {
   game.clicked(e);
   document.getElementById("ship").style.cssText = "display: block";
-  $('#ship').animate({height: '500px'});
-  $('#ship').animate({height: '0px'});
-  $('audio#startSound')[0].play()
+  $('#ship').animate({height: '500px'}, "slow");
+  $('#ship').animate({height: '0px'}, "slow");
+  $('audio#startSound')[0].play();
 });
 
 
@@ -253,12 +262,12 @@ $(document).on("click", ".answer-button", function(e) {
 
 $(document).on("click", "#start", function() {
   document.getElementById("ship").style.cssText = "display: block";
-  $('#ship').animate({height: '500px'});
-  $('#ship').animate({height: '0px'});
+  $('#ship').animate({height: '500px'}, "slow");
+  $('#ship').animate({height: '0px'}, "slow");
   $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>");
   game.loadQuestion();
   $('audio#bgSound')[0].play();
-
+  
 
   $('audio#startSound')[0].play() 
 }); 
