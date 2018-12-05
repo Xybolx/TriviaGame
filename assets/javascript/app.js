@@ -170,11 +170,12 @@ var game = {
 
   answeredCorrectly: function() {
     $("audio#winSound")[0].play();
+    document.getElementById("ship").style.cssText = "display: block";
     $('#sub-wrapper').animate({opacity: '0'}, "slow");
     $('#sub-wrapper').animate({opacity: '0.3'});
     $('#sub-wrapper').animate({opacity: '0'}, "slow");
     $('#sub-wrapper').animate({opacity: '0.2'});
-      $('#sub-wrapper').animate({opacity: '0.3'}, "slow");
+      $('#sub-wrapper').animate({opacity: '0'}, "slow");
       $('#sub-wrapper').animate({opacity: '100'});
       
       
@@ -267,9 +268,10 @@ $(document).on("click", "#start", function() {
   $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>");
   game.loadQuestion();
   $('audio#bgSound')[0].play();
-  
+  $('audio#startSound')[0].play(); 
 
-  $('audio#startSound')[0].play() 
+  
+  
 }); 
 
 
