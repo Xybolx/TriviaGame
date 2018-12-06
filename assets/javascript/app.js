@@ -68,55 +68,63 @@ var game = {
       $('#ship').animate({height: '0px'});
       $('audio#warnSound')[0].play();
       game.timeUp();
+      $('#test').animate({opacity: '0'}, "slow");
+      $('#test').animate({opacity: '0.3'});
+      $('#test').animate({opacity: '0'}, "slow");
+      $('#test').animate({opacity: '0.2'});
+        $('#test').animate({opacity: '0'}, "slow");
+        $('#test').animate({opacity: '100'});
       
-    
-    
-    
-       
+
+      
+      
+      
+      
+      
+      
     }
     
   },
-
+  
   loadQuestion: function() {
     timer = setInterval(game.countdown, 1000);
-
     
-
+    
+    
     $("#start").remove();
     
-
+    
     
     card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
-  
+    
     for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
       card.append("<button class='answer-button' id='button' data-name='"+ questions[this.currentQuestion].answers[i]
       + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
     }
     
   },
-
+  
   nextQuestion: function() {
     game.counter = countStartNumber;
     $("#counter-number").text(game.counter);
     game.currentQuestion++;
     game.loadQuestion();
   },
-
+  
   timeUp: function() {
-
     clearInterval(timer);
 
     $("#counter-number").html(game.counter);
 
     card.html("<h2>What do we do?!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[this.currentQuestion].correctAnswer);
-    card.append("<img src='" + questions[this.currentQuestion].image + "' />");
-
+    card.append("<img id='test' src='" + questions[this.currentQuestion].image + "' />");
+    $('audio#startSound')[0].play();
     if (game.currentQuestion === questions.length - 1) {
-      setTimeout(game.results, 3 * 1000);
+      setTimeout(game.results, 5 * 1000);
     }
     else {
-      setTimeout(game.nextQuestion, 3 * 1000);
+      setTimeout(game.nextQuestion, 5 * 1000);
     }
   },
 
@@ -150,15 +158,22 @@ var game = {
 
   answeredIncorrectly: function() {
     $("audio#wrongSound")[0].play();
-
+    
     game.incorrect++;
-
+    
     clearInterval(timer);
-
+    
     card.html("<h2>Inaccurate! Inaccurate!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
-    card.append("<img class='test' src='"+ questions[game.currentQuestion].image + "' />");
-
+    card.append("<img id='test' src='"+ questions[game.currentQuestion].image + "' />");
+    
+    $('#test').animate({opacity: '0'}, "slow");
+    $('#test').animate({opacity: '0.3'});
+    $('#test').animate({opacity: '0'}, "slow");
+    $('#test').animate({opacity: '0.2'});
+      $('#test').animate({opacity: '0'}, "slow");
+      $('#test').animate({opacity: '100'});
+    
     if (game.currentQuestion === questions.length - 1) {
       setTimeout(game.results, 6 * 1000);
     }
