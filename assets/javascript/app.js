@@ -202,6 +202,7 @@ var game = {
     
     
     card.html("<h2>Verified!</h2>");
+    card.append("<h3>The Correct Answer was</h3>");
     card.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
     $('#test').animate({opacity: '0'}, "slow");
     $('#test').animate({opacity: '0.3'});
