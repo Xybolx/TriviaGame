@@ -116,7 +116,7 @@ var game = {
 
     $("#counter-number").html(game.counter);
 
-    card.html("<h2>What do we do?!</h2>");
+    card.html("<h2>You took too long to answer!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[this.currentQuestion].correctAnswer);
     card.append("<img id='test' src='" + questions[this.currentQuestion].image + "' />");
     $('audio#startSound')[0].play();
@@ -134,7 +134,7 @@ var game = {
 
     clearInterval(timer);
 
-    card.html("<h2>You mind telling me what this is all about, mister?!</h2>");
+    card.html("<h2>You Mind Telling Me What This Is All About, Mister?!</h2>");
 
     $("#counter-number").text(game.counter);
 
@@ -164,7 +164,7 @@ var game = {
     clearInterval(timer);
     
     card.html("<h2>Inaccurate! Inaccurate!</h2>");
-    card.append("<h3>The Correct Answer was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
+    card.append("<h3>The Correct Answer Was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
     card.append("<img id='test' src='"+ questions[game.currentQuestion].image + "' />");
     
     $('#test').animate({opacity: '0'}, "slow");
@@ -202,7 +202,7 @@ var game = {
     
     
     card.html("<h2>Verified!</h2>");
-    card.append("<h3>The Correct Answer was</h3>");
+    card.append("<h3>Good Guess, You Nerd!</h3>");
     card.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
     $('#test').animate({opacity: '0'}, "slow");
     $('#test').animate({opacity: '0.3'});
