@@ -53,7 +53,22 @@ var questions = [{
   question: "In the episode entitled \"Plato's Children\", which two cast members shared what was believed to be the first interracial kiss on televion?",
   answers: ["DeForrest Kelley & George Takei", "Majel Barrett-Roddenberry & William Marshall", "William Shatner & Nichelle Nichols", "Booker Bradshaw & Grace Lee Whitney"],
   correctAnswer: "William Shatner & Nichelle Nichols",
-  image: "assets/images/kiss.gif"    
+  image: "assets/images/kiss.gif"
+}, {
+  question: "Dr. McCoy actor DeForrest Kelley originally auditioned for what part?",
+  answers: ["Scotty", "Sulu", "Kirk", "Spock"],
+  correctAnswer: "Spock",
+  image: "assets/images/blue.gif"
+}, {
+  question: "What was the title of the \"lost\" Star Trek pilot episode, not seen on television?",
+  answers: ["\"Court Martial\"", "\"The Cage\"", "\"Where No Man Has Gone Before\"", "\"Pilot\""],
+  correctAnswer: "\"The Cage\"",
+  image: "assets/images/cage.gif"
+}, {
+  question: "In what country was Star Trek first aired on TV?",
+  answers: ["Canada", "United States", "Germany", "Mexico"],
+  correctAnswer: "Canada",
+  image: "assets/images/canada.gif"         
 }];
 
 // hide our enterprise image id for our ship animation
