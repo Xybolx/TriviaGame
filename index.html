@@ -2,97 +2,83 @@
 
 <html lang="en-us">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
-    <title>Star Trek Trivia</title>
+  <meta charset="UTF-8">
+  <title>Star Trek Trivia</title>
 
-    <!-- CSS Reset Sheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+  <!-- link to css reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 
-    <!-- Our own CSS Sheet -->
-    <link rel="stylesheet" href="assets/css/stylesheet.css">
+  <!-- link to our css page -->
+  <link rel="stylesheet" href="assets/css/stylesheet.css">
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--jquery link-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
+  
+  
 
-  </head>
+</head>
 
-  <body>
-    
-    
-    
-    
-    
-    <audio id="startSound"> 
-      <source src="assets/sounds/tos-transporter.mp3" type="audio/mp3">
-        
-        
-      </audio>
-      <audio id="loseSound"> 
-        <source src="http://www.barbneal.com/wp-content/uploads/spock24.mp3" type="audio/mp3">
-          
-          
-        </audio>
-        
-        <audio id="doneSound"> 
-          <source src="http://www.barbneal.com/wp-content/uploads/kirk02.mp3" type="audio/mp3">
-            
-            
-          </audio>
+<body>
 
-          <audio id="warnSound"> 
-              <source src="assets/sounds/scotty07.mp3" type="audio/mp3">
-                
-                
-              </audio>
-          <audio id="winSound"> 
-              
-              <source src="http://www.trekcore.com/audio/toscomputer/voice/tos_verified.mp3" type="audio/mp3">
-                
-                
-              </audio>
-              <audio id="wrongSound"> 
-              
-                <source src="http://www.trekcore.com/audio/toscomputer/voice/tos_inaccurateerror_ep.mp3" type="audio/mp3">
-                  
-                  
-                </audio>
-                <audio id="bgSound"> 
-              
-                  <source src="http://www.trekcore.com/audio/background/tos_bridge_1_activate.mp3" type="audio/mp3">
-                    
-                    
-                  </audio>
-          
-          
-                  
-                  
-            
-            
-                
-          
-          
-          
-          
-          
-          
-          <div id="wrapper">    
-            <h1>STAR TREK TRIVIA</h1>
-            <img id="ship" src="assets/images/enterprise.png"/>
-      <div id="sub-wrapper">
-        <div id="quiz-area">
-          <button id="start">Start</button>
-        </div>
+
+
+
+  <!--our audio id's to be referenced on our app.js page-->
+  <audio id="startSound">
+    <source src="assets/sounds/tos-transporter.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="loseSound">
+    <source src="http://www.barbneal.com/wp-content/uploads/spock24.mp3" type="audio/mp3">
+  </audio>
+
+
+
+
+  <audio id="doneSound">
+    <source src="http://www.barbneal.com/wp-content/uploads/kirk02.mp3" type="audio/mp3">
+  </audio>
+
+
+
+  <audio id="warnSound">
+    <source src="assets/sounds/scotty07.mp3" type="audio/mp3">
+  </audio>
+
+
+  <audio id="winSound">
+    <source src="http://www.trekcore.com/audio/toscomputer/voice/tos_verified.mp3" type="audio/mp3">
+  </audio>
+
+
+
+  <audio id="wrongSound">
+    <source src="http://www.trekcore.com/audio/toscomputer/voice/tos_inaccurateerror_ep.mp3" type="audio/mp3">
+  </audio>
+
+
+  <audio id="bgSound">
+    <source src="http://www.trekcore.com/audio/background/tos_bridge_1_activate.mp3" type="audio/mp3">
+  </audio>
+
+
+  <!--our html skeleton-->
+  <div id="wrapper">
+    <h1>STAR TREK TRIVIA</h1>
+  <!--our enterprise image id to be referenced on our app.js page (hidden in <h1> before and after animation)-->  
+    <img id="ship" src="assets/images/enterprise.png" />
+    <div id="sub-wrapper">
+      <div id="quiz-area">
+        <button id="start">Start</button>
       </div>
     </div>
+  </div>
+  <!--our link to our app.js javascript page-->
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
 
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-
-  </body>
+</body>
 
 </html>
-
