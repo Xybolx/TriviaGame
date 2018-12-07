@@ -1,5 +1,6 @@
 /* import our font from google fonts */
 @import url('https://fonts.googleapis.com/css?family=Voltaire');
+
 html,
 body {
   height: 100%;
@@ -10,10 +11,11 @@ body {
   text-align: center;
   font-family: voltaire, sans-serif;
   color: yellow;
+  /*set our background image for the body*/
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
   
 }
-
+/*set the div that holds our quiz content to make it more mobile friendly*/
 #wrapper {
   width: 960px;
   min-height: 80%;
@@ -30,7 +32,7 @@ body {
   top: 20%;
   
 }
-
+/*set the width of our buttons to be more mobile friendly, set font color, and give them a background image*/
 button {
   display: block;
   width: 950px;
@@ -42,7 +44,7 @@ button {
   background-image: url("../images/pattern.png");
   border: 2px solid blue;
 }
-
+/*set the main headline's font, font size, color, and text-shadow color and height*/
 h1 {
   margin-bottom: 50px;
   font-family: voltaire, sans-serif;
@@ -70,14 +72,14 @@ h3 {
   font-size: 25px;
   text-shadow: 2px 3px blue;
 }
-
+/*style the start button's font and give it a background image*/
 #start {
   margin-top: 10%;
   background-image: url("../images/pattern.png");
   border: 2px solid blue;
   color: white;
 }
-
+/*set the background image for quiz-area transporter effect and set text-shadow height and color*/
 #quiz-area {
   background-image: url("../images/mat.gif");
   background-size: cover;
