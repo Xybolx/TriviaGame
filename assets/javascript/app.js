@@ -68,7 +68,37 @@ var questions = [{
   question: "In what country was Star Trek first aired on TV?",
   answers: ["Canada", "United States", "Germany", "Mexico"],
   correctAnswer: "Canada",
-  image: "assets/images/canada.gif"         
+  image: "assets/images/canada.gif"
+}, {
+  question: "Which of these James's played the role of Chief Engineer Scott?",
+  answers: ["James Hayward", "James Doohan", "James Brolin", "James Avery"],
+  correctAnswer: "James Doohan",
+  image: "assets/images/scotty.gif"
+}, {
+  question: "How many seasons of Star Trek: The Original Series are there?",
+  answers: ["7", "10", "8", "3"],
+  correctAnswer: "3",
+  image: "assets/images/three.gif"
+}, {
+  question: "In the episode \"Journey To Babel\", Which actress played Amanda Grayson, Spock's mother?",
+  answers: ["Jane Wyatt", "Jane Seymour", "Grace Lee Whitney", "Shirley Temple"],
+  correctAnswer: "Jane Wyatt",
+  image: "assets/images/spock_mom.gif"
+}, {
+  question: "What is the registry number for the star ship Enterprise?",
+  answers: ["NCC-1701-D", "NCC-1701-C", "NCC-1701-B", "NCC-1701"],
+  correctAnswer: "NCC-1701",
+  image: "assets/images/enterprise2.gif"
+}, {
+  question: "During a battle with the Enterprise in the episode \"Balance of Terror\", the commander of the Romulan Bird of Prey does what out of desperation?",
+  answers: ["Calls for a truce", "Launches a nuclear weapon", "Calls for red alert", "Eats a sandwich"],
+  correctAnswer: "Launches a nuclear weapon",
+  image: "assets/images/mushroom_cloud.gif"
+}, {
+  question: "Zefram Cochrane was the inventor of warp drive. In what episode did he first appear along with his companion?",
+  answers: ["\"Space Stuff\"", "\"Mirror, Mirror\"", "\"Our Yesterdays\"", "\"Metamorphosis\""],
+  correctAnswer: "\"Metamorphosis\"",
+  image: "assets/images/cochrane.gif"                    
 }];
 
 // hide our enterprise image id for our ship animation
