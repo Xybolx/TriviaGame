@@ -1,7 +1,7 @@
 // define id quiz-area as a variable 
 var card = $("#quiz-area");
 // define variable countStartNumber as 30
-var countStartNumber = 30;
+var countStartNumber = 15;
 
 // question set as an object
 var questions = [{
@@ -50,7 +50,7 @@ var questions = [{
   correctAnswer: "Lucille Ball",
   image: "assets/images/lucille.gif"
 }, {
-  question: "In the episode entitled \"Plato's Children\", which two cast members shared what was believed to be the first interracial kiss on televion?",
+  question: "Which two cast members shared the supposed first interracial kiss on TV?",
   answers: ["DeForrest Kelley & George Takei", "Majel Barrett-Roddenberry & William Marshall", "William Shatner & Nichelle Nichols", "Booker Bradshaw & Grace Lee Whitney"],
   correctAnswer: "William Shatner & Nichelle Nichols",
   image: "assets/images/kiss.gif"
@@ -60,7 +60,7 @@ var questions = [{
   correctAnswer: "Spock",
   image: "assets/images/blue.gif"
 }, {
-  question: "What was the title of the \"lost\" Star Trek pilot episode, not seen on television?",
+  question: "What was the title of the \"lost\" Star Trek pilot episode, not seen on TV?",
   answers: ["\"Court Martial\"", "\"The Cage\"", "\"Where No Man Has Gone Before\"", "\"Pilot\""],
   correctAnswer: "\"The Cage\"",
   image: "assets/images/cage.gif"
@@ -119,17 +119,19 @@ var game = {
   countdown: function () {
     game.counter--;
     $("#counter-number").html(game.counter);
+    if (game.counter <= 5) {
+      $("#timeSound")[0].play();
+    }
     if (game.counter === 0) {
       console.log("TIME UP");
   // show our enterprise image id for ship animation    
       document.getElementById("ship").style.cssText = "display: block";
   // our jquery to call our ship animation    
-      $('#ship').animate({ height: '500px' });
-      $('#ship').animate({ height: '0px' });
-  // jquery to call the sound that plays when a question times out due to no answer    
-      $('audio#warnSound')[0].play();
+  $('#ship').animate({ height: '500px' });
+  $('#ship').animate({ height: '0px' });
+  
       game.timeUp();
-  // jquery to animate our "you took too long to answer" message    
+      // jquery to animate our "you took too long to answer" message    
       $('#test').animate({ opacity: '0' }, "slow");
       $('#test').animate({ opacity: '0.3' });
       $('#test').animate({ opacity: '0' }, "slow");
@@ -138,23 +140,23 @@ var game = {
       $('#test').animate({ opacity: '100' });
     }
   },
-
+  
   // function that loads the first question
   loadQuestion: function () {
-  // set our countdown interval to one second  
+    // set our countdown interval to one second  
     timer = setInterval(game.countdown, 1000);
-  // remove our start button from quiz-area div
+    // remove our start button from quiz-area div
     $("#start").remove();
-  // put the first question in our quiz-area div 
+    // put the first question in our quiz-area div 
     card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
-  // for loop to append the current question's answer options to our buttons
+    // for loop to append the current question's answer options to our buttons
     for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
       card.append("<button class='answer-button' id='button' data-name='" + questions[this.currentQuestion].answers[i]
-        + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
+      + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
     }
-
+    
   },
-
+  
   // function to change to the next question
   nextQuestion: function () {
     game.counter = countStartNumber;
@@ -162,45 +164,58 @@ var game = {
     game.currentQuestion++;
     game.loadQuestion();
   },
-
+  
   // function to control what happens when a question is not answered within the time limit
   timeUp: function () {
     clearInterval(timer);
 
     $("#counter-number").html(game.counter);
-  // append the quiz-area div to display our "you took too long" message and display the correct answer
-    card.html("<h2>You took too long to answer!</h2>");
+    // jquery to call the sound that plays when a question times out due to no answer    
+    $('audio#warnSound')[0].play();
+    // append the quiz-area div to display our "you took too long" message and display the correct answer
+    card.html("<h2>Up your shaft! You took too long to answer!</h2>");
     card.append("<h3>The Correct Answer was: " + questions[this.currentQuestion].correctAnswer);
     card.append("<img id='test' src='" + questions[this.currentQuestion].image + "' />");
-  // jquery to call our transporter sound  
+    // jquery to call our transporter sound  
     $('audio#startSound')[0].play();
-  // if statement to control how long our "you took too long" message appears in quiz-area div 
+    // if statement to control how long our "you took too long" message appears in quiz-area div 
     if (game.currentQuestion === questions.length - 1) {
-  // show game results if last question    
-    setTimeout(game.results, 5 * 1000);
+      // show game results if last question    
+      setTimeout(game.results, 6 * 1000);
     }
-  // show next question if not last question  
+    // show next question if not last question  
     else {
-      setTimeout(game.nextQuestion, 5 * 1000);
+      setTimeout(game.nextQuestion, 6 * 1000);
     }
   },
-
+  
   // function to control what happens at the end of the quiz
   results: function () {
-  // jquery that calls our sound that plays when the quiz is finished  
-    $("audio#doneSound")[0].play();
-
+    
     clearInterval(timer);
-  // appends our quiz-area div with our quiz finished message
-    card.html("<h2>You Mind Telling Me What This Is All About, Mister?!</h2>");
-
-
+    // appends our quiz-area div with our quiz finished message
+    
     $("#counter-number").text(game.counter);
-  // append results and our start over button to our quiz-area div
-    card.append("<h3>Correct Answers: " + game.correct + "</h3>");
-    card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-    card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
-    card.append("<br><button id='start-over'>Start Over?</button>");
+    if (game.incorrect >= 5){
+      // jquery that calls our sound that plays when the quiz is failed (5 or more incorrect answers) 
+      $("#doneSound")[0].play();
+      // append failed message, results, and our start over button to our quiz-area div
+      card.html("<h2>FAILED!:You should study the library tapes!</h2>");
+      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
+      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
+      card.append("<br><button id='start-over'>Start Over?</button>");
+    }
+    else {
+      // jquery that calls our sound that plays when quiz is passed (15 or more correct answers)
+      $("#passSound")[0].play();
+      // append passed message, results, and our start over? button to our quiz area div
+      card.html("<h2>PASSED!:You must be a true Trekkie!</h2>");
+      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
+      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
+      card.append("<br><button id='start-over'>Start Over?</button>");
+    }
   },
   
   // function that controls what happens when a correct or incorrect answer button is clicked
