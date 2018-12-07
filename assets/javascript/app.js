@@ -1,7 +1,7 @@
 // define id quiz-area as a variable 
 var card = $("#quiz-area");
 // define variable countStartNumber as 30
-var countStartNumber = 8;
+var countStartNumber = 15;
 
 // question set as an object
 var questions = [{
@@ -85,7 +85,7 @@ var questions = [{
   correctAnswer: "Jane Wyatt",
   image: "assets/images/spock_mom.gif"
 }, {
-  question: "What is the registry number for the star ship Enterprise?",
+  question: "What is the registry number for the starship Enterprise?",
   answers: ["NCC-1701-D", "NCC-1701-C", "NCC-1701-B", "NCC-1701"],
   correctAnswer: "NCC-1701",
   image: "assets/images/enterprise2.gif"
