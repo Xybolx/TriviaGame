@@ -30,6 +30,11 @@ var questions = [{
   correctAnswer: "The Romulans",
   image: "assets/images/romulan2.gif"
 }, {
+  question: "What is Captain Kirk's middle name?",
+  answers: ["Tony", "Thomas", "Tiberius", "Teddy"],
+  correctAnswer: "Tiberius", 
+  image: "assets/images/jhands.gif"
+}, {  
   question: "What class of starship does the USS Enterprise belong to?",
   answers: ["Constitution Class", "Galaxy Class", "Freighter Class", "Full Stack Flex Class"],
   correctAnswer: "Constitution Class",
@@ -70,7 +75,7 @@ var questions = [{
   correctAnswer: "Canada",
   image: "assets/images/canada.gif"
 }, {
-  question: "Which of these James's played the role of Chief Engineer Scott?",
+  question: "Which of these James's played the role of Chief Engineer Scotty?",
   answers: ["James Hayward", "James Doohan", "James Brolin", "James Avery"],
   correctAnswer: "James Doohan",
   image: "assets/images/scotty.gif"
@@ -200,7 +205,7 @@ var game = {
   results: function () {
     
     clearInterval(timer);
-    // appends our quiz-area div with our quiz finished message
+    
     
     $("#counter-number").text(game.counter);
     if (game.correct >= 15){
@@ -324,7 +329,8 @@ $(document).on("click", "#start-over", function () {
   $('#ship').animate({ height: '500px' }, "slow");
   $('#ship').animate({ height: '0px' }, "slow");
 // jquery to call our transporter sound  
-  $('audio#startSound')[0].play()
+  $('audio#startSound')[0].play();
+  $('audio#bgSound')[0].play();
 });
 $(document).on("click", ".answer-button", function (e) {
   game.clicked(e);
