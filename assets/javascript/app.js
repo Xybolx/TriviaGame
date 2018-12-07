@@ -44,6 +44,16 @@ var questions = [{
   answers: ["Harry Mudd", "Khan", "JJ Abrams", "Trelane"],
   correctAnswer: "Khan",
   image: "assets/images/khan.gif"
+}, {
+  question: "what Hollywood legend was influential in bringing Star Trek to television?",
+  answers: ["Lucille Ball", "John Wayne", "Jackie Gleason", "Kermit The Frog"],
+  correctAnswer: "Lucille Ball",
+  image: "assets/images/lucille.gif"
+}, {
+  question: "In the episode entitled \"Plato's Children\", which two cast members shared what was believed to be the first interracial kiss on televion?",
+  answers: ["DeForrest Kelley & George Takei", "Majel Barrett-Roddenberry & William Marshall", "William Shatner & Nichelle Nichols", "Booker Bradshaw & Grace Lee Whitney"],
+  correctAnswer: "William Shatner & Nichelle Nichols",
+  image: "assets/images/kiss.gif"    
 }];
 
 // hide our enterprise image id for our ship animation
