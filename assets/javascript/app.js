@@ -1,7 +1,7 @@
 // define id quiz-area as a variable 
 var card = $("#quiz-area");
 // define variable countStartNumber as 30
-var countStartNumber = 15;
+var countStartNumber = 8;
 
 // question set as an object
 var questions = [{
@@ -119,11 +119,17 @@ var game = {
   countdown: function () {
     game.counter--;
     $("#counter-number").html(game.counter);
+  // if statement that plays a warning sound, turns the counter red, and animates it with 5 seconds left  
     if (game.counter <= 5) {
+      $("#counter-number").css("color", "red");
+      $("#counter-number").animate({fontSize: '2em'});
+      $("#counter-number").animate({fontSize: '1em'});
       $("#timeSound")[0].play();
     }
     if (game.counter === 0) {
       console.log("TIME UP");
+  // turns our counter number back to yellow when it hits zero    
+      $("#counter-number").css("color", "yellow");
   // show our enterprise image id for ship animation    
       document.getElementById("ship").style.cssText = "display: block";
   // our jquery to call our ship animation    
@@ -159,6 +165,7 @@ var game = {
   
   // function to change to the next question
   nextQuestion: function () {
+    $("#counter-number").css("color", "yellow");
     game.counter = countStartNumber;
     $("#counter-number").text(game.counter);
     game.currentQuestion++;
@@ -196,17 +203,7 @@ var game = {
     // appends our quiz-area div with our quiz finished message
     
     $("#counter-number").text(game.counter);
-    if (game.incorrect >= 5){
-      // jquery that calls our sound that plays when the quiz is failed (5 or more incorrect answers) 
-      $("#doneSound")[0].play();
-      // append failed message, results, and our start over button to our quiz-area div
-      card.html("<h2>FAILED!:You should study the library tapes!</h2>");
-      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
-      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
-      card.append("<br><button id='start-over'>Start Over?</button>");
-    }
-    else {
+    if (game.correct >= 15){
       // jquery that calls our sound that plays when quiz is passed (15 or more correct answers)
       $("#passSound")[0].play();
       // append passed message, results, and our start over? button to our quiz area div
@@ -214,6 +211,18 @@ var game = {
       card.append("<h3>Correct Answers: " + game.correct + "</h3>");
       card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
       card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
+      card.append("<img id='test' src='assets/images/dancing.gif'/>");
+      card.append("<br><button id='start-over'>Start Over?</button>");
+    }
+    else {
+      // jquery that calls our sound that plays when the quiz is failed (5 or more incorrect answers) 
+      $("#doneSound")[0].play();
+      // append failed message, results, and our start over button to our quiz-area div
+      card.html("<h2>FAILED!:You should study the library tapes!</h2>");
+      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
+      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
+      card.append("<img id='test' src='assets/images/explode.gif'/>");
       card.append("<br><button id='start-over'>Start Over?</button>");
     }
   },
@@ -334,7 +343,7 @@ $(document).on("click", "#start", function () {
   $('#ship').animate({ height: '500px' }, "slow");
   $('#ship').animate({ height: '0px' }, "slow");
 // prepend time remaining to sub-wrapper <h2> id   
-  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>");
+  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>15</span> Seconds</h2>");
   game.loadQuestion();
 // jquery to call our background noises and our transporter sound  
   $('audio#bgSound')[0].play();
