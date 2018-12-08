@@ -18,7 +18,7 @@ var questions = [{
   question: "Who was the original captain of the USS Enterprise?",
   answers: ["Spock", "James T. Kirk", "Christopher Pike", "Jack Sparrow"],
   correctAnswer: "Christopher Pike",
-  image: "assets/images/pike.gif"
+  image: "assets/images/cage.gif"
 }, {
   question: "The phrase \"Beam me up Scotty\" is used most by what character?",
   answers: ["Uhura", "Bones", "Cpt. Kirk", "The exact phrase is never used"],
