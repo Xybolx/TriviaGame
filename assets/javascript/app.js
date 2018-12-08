@@ -123,6 +123,20 @@ var quiz = {
   correct: 0,
   incorrect: 0,
 
+animate: function(){
+  document.getElementById("ship").style.cssText = "display: block";
+  $('#ship').animate({ height: '500px' }, "slow");
+  $('#ship').animate({ height: '0px' }, "slow");
+  },
+transPort: function() {
+    $('#startSound')[0].play();
+    $('#test').animate({ opacity: '0' }, "slow");
+  $('#test').animate({ opacity: '0.3' });
+  $('#test').animate({ opacity: '0' }, "slow");
+  $('#test').animate({ opacity: '0.2' });
+  $('#test').animate({ opacity: '0' }, "slow");
+  $('#test').animate({ opacity: '100' });
+  },
   // function to control our countdown
   countdown: function () {
     quiz.counter--;
@@ -135,23 +149,15 @@ var quiz = {
       $("#timeSound")[0].play();
     }
     if (quiz.counter === 0) {
+      quiz.transPort();
       console.log("TIME UP");
       // turns our counter number back to yellow when it hits zero    
       $("#counter-digit").css("color", "yellow");
       // show our enterprise image id for ship animation    
-      document.getElementById("ship").style.cssText = "display: block";
-      // our jquery to call our ship animation    
-      $('#ship').animate({ height: '500px' });
-      $('#ship').animate({ height: '0px' });
-
+      
+      quiz.animate();
       quiz.timeOver();
       // jquery to animate our "you took too long to answer" message    
-      $('#test').animate({ opacity: '0' }, "slow");
-      $('#test').animate({ opacity: '0.3' });
-      $('#test').animate({ opacity: '0' }, "slow");
-      $('#test').animate({ opacity: '0.2' });
-      $('#test').animate({ opacity: '0' }, "slow");
-      $('#test').animate({ opacity: '100' });
     }
   },
 
@@ -183,8 +189,12 @@ var quiz = {
   },
 
   // function to control what happens when a question is not answered within the time limit
+  
   timeOver: function () {
+    
+  
     clearInterval(clock);
+    
 
     $("#counter-digit").html(quiz.counter);
     // jquery to call the sound that plays when a question times out due to no answer    
@@ -194,7 +204,6 @@ var quiz = {
     board.append("<h3>The Correct Answer was: " + questions[this.heldQuestion].correctAnswer);
     board.append("<img id='test' src='" + questions[this.heldQuestion].image + "' />");
     // jquery to call our transporter sound  
-    $('#startSound')[0].play();
     // if statement to control how long our "you took too long" message appears in form-area div 
     if (quiz.heldQuestion === questions.length - 1) {
       // show quiz results if last question    
@@ -204,6 +213,7 @@ var quiz = {
     else {
       setTimeout(quiz.deckQuestion, 5 * 1000);
     }
+    
   },
 
   // function to control what happens at the end of the quiz
@@ -252,23 +262,20 @@ var quiz = {
   guessedIncorrectly: function () {
     // jquery that calls our sound that plays when a question is answered incorrectly  
     $("#wrongSound")[0].play();
+    quiz.transPort();
 
     quiz.incorrect++;
 
     clearInterval(clock);
-    
+
 
     // append our inaccurate message, our correct answer was message, and display our correct answer image    
     board.html("<h2>Inaccurate! Inaccurate!</h2>");
     board.append("<h3>The Correct Answer Was: " + questions[quiz.heldQuestion].correctAnswer + "</h3>");
     board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
     // jquery to call our incorrect answer image animation
-    $('#test').animate({ opacity: '0' }, "slow");
-    $('#test').animate({ opacity: '0.3' });
-    $('#test').animate({ opacity: '0' }, "slow");
-    $('#test').animate({ opacity: '0.2' });
-    $('#test').animate({ opacity: '0' }, "slow");
-    $('#test').animate({ opacity: '100' });
+    
+    quiz.animate();
     // if statement that controls how long our incorrect answer message, correct answer was message, and correct answer image are shown 
     if (quiz.heldQuestion === questions.length - 1) {
       // if last question then show results    
@@ -285,23 +292,18 @@ var quiz = {
     // jquery to call the sound that plays when a question is answered correctly  
     $("#winSound")[0].play();
     // show our enterprise image id for ship animation  
-    document.getElementById("ship").style.cssText = "display: block";
+   quiz.animate();
     clearInterval(clock);
 
     quiz.correct++;
-
+    
+    quiz.transPort();
     // append our "verified" message, "good guess you nerd" message, and our correct answer image to form-area div
     board.html("<h2>Verified!</h2>");
     board.append("<h3>Good Guess, You Nerd!</h3>");
     board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
 
     // jquery to call our correct answer image animations
-    $('#test').animate({ opacity: '0' }, "slow");
-    $('#test').animate({ opacity: '0.3' });
-    $('#test').animate({ opacity: '0' }, "slow");
-    $('#test').animate({ opacity: '0.2' });
-    $('#test').animate({ opacity: '0' }, "slow");
-    $('#test').animate({ opacity: '100' });
     // if statement that controls how long our "verified" and "good guess" messages and correct answer image are displayed
     if (quiz.heldQuestion === questions.length - 1) {
       // if last question then show quiz results    
@@ -328,37 +330,33 @@ var quiz = {
 // all of our on click events
 $(document).on("click", "#start-over", function () {
   quiz.reset();
-  // show our enterprise image id for our ship animation  
- document.getElementById("ship").style.cssText = "display: block";
-  // jquery to call our enterprise ship animation  
-  $('#ship').animate({ height: '500px' }, "slow");
-  $('#ship').animate({ height: '0px' }, "slow");
-  // jquery to call our transporter sound  
-  $('#startSound')[0].play();
-  $('#bgSound')[0].play();
+  // show our enterprise image id for our ship animation 
+  quiz.animate(); 
+
+
 });
 $(document).on("click", ".answer-button", function (e) {
   quiz.clicked(e);
+  quiz.transPort();
   $("#timeSound")[0].pause();
   // show our enterprise image id for our ship animation
+  quiz.animate();
   
-  document.getElementById("ship").style.cssText = "display: block";
   // jquery to call our ship animation  
-  $('#ship').animate({ height: '500px' }, "slow");
-  $('#ship').animate({ height: '0px' }, "slow");
   // jquery to call our transporter sound  
-  $('#startSound')[0].play();
+ 
 });
 $(document).on("click", "#start", function () {
-    
+  
   // jquery to call our ship animation  
-  $('#ship').animate({ height: '500px' }, "slow");
-  $('#ship').animate({ height: '0px' }, "slow");
+ quiz.animate();
   // prepend time remaining to pre-form <h2> id
   $("#pre-form").prepend("<h2>Time Remaining: <span id='counter-digit'>15</span> Seconds</h2>");
   quiz.grabQuestion();
+  quiz.transPort();
   
   // jquery to call our background noises and our transporter sound  
+ 
   $('#bgSound')[0].play();
   $('#startSound')[0].play();
 });
