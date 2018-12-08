@@ -110,7 +110,7 @@ var questions = [{
 document.getElementById('ship').style.cssText = "display: none";
 
 // variable that will hold the setInterval
-var timer;
+var clock;
 // define our whole quiz as an object
 var quiz = {
 
@@ -155,7 +155,7 @@ var quiz = {
   // function that loads the first question
   loadQuestion: function () {
     // set our countdown interval to one second  
-    timer = setInterval(quiz.countdown, 1000);
+    clock = setInterval(quiz.countdown, 1000);
     // remove our start button from form-area div
     $("#start").remove();
     // put the first question in our form-area div 
@@ -180,7 +180,7 @@ var quiz = {
 
   // function to control what happens when a question is not answered within the time limit
   timeUp: function () {
-    clearInterval(timer);
+    clearInterval(clock);
 
     $("#counter-digit").html(quiz.counter);
     // jquery to call the sound that plays when a question times out due to no answer    
@@ -205,7 +205,7 @@ var quiz = {
   // function to control what happens at the end of the quiz
   results: function () {
 
-    clearInterval(timer);
+    clearInterval(clock);
 
 
     $("#counter-digit").text(quiz.counter);
@@ -235,7 +235,7 @@ var quiz = {
 
   // function that controls what happens when a correct or incorrect answer button is clicked
   clicked: function (e) {
-    clearInterval(timer);
+    clearInterval(clock);
     if ($(e.target).attr("data-name") === questions[this.currentQuestion].correctAnswer) {
       this.answeredCorrectly();
     }
@@ -247,11 +247,11 @@ var quiz = {
   // function that controls what happens when a question is answered incorrectly
   answeredIncorrectly: function () {
     // jquery that calls our sound that plays when a question is answered incorrectly  
-    $("audio#wrongSound")[0].play();
+    $("#wrongSound")[0].play();
 
     quiz.incorrect++;
 
-    clearInterval(timer);
+    clearInterval(clock);
     
 
     // append our inaccurate message, our correct answer was message, and display our correct answer image    
@@ -283,7 +283,7 @@ var quiz = {
     // show our enterprise image id for ship animation  
     document.getElementById("ship").style.cssText = "display: block";
 
-    clearInterval(timer);
+    clearInterval(clock);
 
     quiz.correct++;
 
@@ -350,8 +350,8 @@ $(document).on("click", "#start", function () {
   // jquery to call our ship animation  
   $('#ship').animate({ height: '500px' }, "slow");
   $('#ship').animate({ height: '0px' }, "slow");
-  // prepend time remaining to sub-wrapper <h2> id   
-  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-digit'>15</span> Seconds</h2>");
+  // prepend time remaining to pre-form <h2> id   
+  $("#pre-form").prepend("<h2>Time Remaining: <span id='counter-digit'>15</span> Seconds</h2>");
   quiz.loadQuestion();
   // jquery to call our background noises and our transporter sound  
   $('audio#bgSound')[0].play();

@@ -16,7 +16,7 @@ body {
   
 }
 
-#wrapper {
+#form-wrapper {
   width: 960px;
   min-height: 80%;
   box-sizing: border-box;
@@ -27,7 +27,7 @@ body {
 
 }
 
-#sub-wrapper {
+#pre-form {
   position: relative;
   top: 20%;
   
