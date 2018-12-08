@@ -1,6 +1,6 @@
 // define id quiz-area as a variable 
-var card = $("#quiz-area");
-// define variable countStartNumber as 30
+var board = $("#quiz-area");
+// define variable countStartNumber as 15
 var countStartNumber = 15;
 
 // question set as an object
@@ -123,18 +123,18 @@ var game = {
   // function to control our countdown
   countdown: function () {
     game.counter--;
-    $("#counter-number").html(game.counter);
+    $("#counter-digit").html(game.counter);
     // if statement that plays a warning sound, turns the counter red, and animates it with 5 seconds left  
-    if (game.counter <= 5) {
-      $("#counter-number").css("color", "red");
-      $("#counter-number").animate({ fontSize: '2em' });
-      $("#counter-number").animate({ fontSize: '1em' });
+    if (game.counter === 5) {
+      $("#counter-digit").css("color", "red");
+      $("#counter-digit").animate({ fontSize: '2em' });
+      $("#counter-digit").animate({ fontSize: '1em' });
       $("#timeSound")[0].play();
     }
     if (game.counter === 0) {
       console.log("TIME UP");
       // turns our counter number back to yellow when it hits zero    
-      $("#counter-number").css("color", "yellow");
+      $("#counter-digit").css("color", "yellow");
       // show our enterprise image id for ship animation    
       document.getElementById("ship").style.cssText = "display: block";
       // our jquery to call our ship animation    
@@ -159,20 +159,21 @@ var game = {
     // remove our start button from quiz-area div
     $("#start").remove();
     // put the first question in our quiz-area div 
-    card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
+    board.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
     // for loop to append the current question's answer options to our buttons
     for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
-      card.append("<button class='answer-button' id='button' data-name='" + questions[this.currentQuestion].answers[i]
-        + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
+      board.append("<button class='answer-button' id='button' data-name='" + questions[this.currentQuestion].answers[i]
+      + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
+      
     }
 
   },
 
   // function to change to the next question
   nextQuestion: function () {
-    $("#counter-number").css("color", "yellow");
+    $("#counter-digit").css("color", "yellow");
     game.counter = countStartNumber;
-    $("#counter-number").text(game.counter);
+    $("#counter-digit").text(game.counter);
     game.currentQuestion++;
     game.loadQuestion();
   },
@@ -181,23 +182,23 @@ var game = {
   timeUp: function () {
     clearInterval(timer);
 
-    $("#counter-number").html(game.counter);
+    $("#counter-digit").html(game.counter);
     // jquery to call the sound that plays when a question times out due to no answer    
     $('audio#warnSound')[0].play();
     // append the quiz-area div to display our "you took too long" message and display the correct answer
-    card.html("<h2>Up your shaft! You took too long to answer!</h2>");
-    card.append("<h3>The Correct Answer was: " + questions[this.currentQuestion].correctAnswer);
-    card.append("<img id='test' src='" + questions[this.currentQuestion].image + "' />");
+    board.html("<h2>Up your shaft! You took too long to answer!</h2>");
+    board.append("<h3>The Correct Answer was: " + questions[this.currentQuestion].correctAnswer);
+    board.append("<img id='test' src='" + questions[this.currentQuestion].image + "' />");
     // jquery to call our transporter sound  
     $('audio#startSound')[0].play();
     // if statement to control how long our "you took too long" message appears in quiz-area div 
     if (game.currentQuestion === questions.length - 1) {
       // show game results if last question    
-      setTimeout(game.results, 6 * 1000);
+      setTimeout(game.results, 5 * 1000);
     }
     // show next question if not last question  
     else {
-      setTimeout(game.nextQuestion, 6 * 1000);
+      setTimeout(game.nextQuestion, 5 * 1000);
     }
   },
 
@@ -207,28 +208,28 @@ var game = {
     clearInterval(timer);
 
 
-    $("#counter-number").text(game.counter);
+    $("#counter-digit").text(game.counter);
     if (game.correct >= 15) {
       // jquery that calls our sound that plays when quiz is passed (15 or more correct answers)
       $("#passSound")[0].play();
       // append passed message, results, and our start over? button to our quiz area div
-      card.html("<h2>PASSED!:You must be a true Trekkie!</h2>");
-      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
-      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
-      card.append("<img id='test' src='assets/images/dancing.gif'/>");
-      card.append("<br><button id='start-over'>Start Over?</button>");
+      board.html("<h2>PASSED!:You must be a true Trekkie!</h2>");
+      board.append("<h3>Correct Answers: " + game.correct + "</h3>");
+      board.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+      board.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
+      board.append("<img id='test' src='assets/images/dancing.gif'/>");
+      board.append("<br><button id='start-over'>Start Over?</button>");
     }
     else {
       // jquery that calls our sound that plays when the quiz is failed (5 or more incorrect answers) 
       $("#doneSound")[0].play();
       // append failed message, results, and our start over button to our quiz-area div
-      card.html("<h2>FAILED!:You should study the library tapes!</h2>");
-      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
-      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
-      card.append("<img id='test' src='assets/images/explode.gif'/>");
-      card.append("<br><button id='start-over'>Start Over?</button>");
+      board.html("<h2>FAILED!:You should study the library tapes!</h2>");
+      board.append("<h3>Correct Answers: " + game.correct + "</h3>");
+      board.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+      board.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
+      board.append("<img id='test' src='assets/images/explode.gif'/>");
+      board.append("<br><button id='start-over'>Start Over?</button>");
     }
   },
 
@@ -251,11 +252,12 @@ var game = {
     game.incorrect++;
 
     clearInterval(timer);
+    
 
     // append our inaccurate message, our correct answer was message, and display our correct answer image    
-    card.html("<h2>Inaccurate! Inaccurate!</h2>");
-    card.append("<h3>The Correct Answer Was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
-    card.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
+    board.html("<h2>Inaccurate! Inaccurate!</h2>");
+    board.append("<h3>The Correct Answer Was: " + questions[game.currentQuestion].correctAnswer + "</h3>");
+    board.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
     // jquery to call our incorrect answer image animation
     $('#test').animate({ opacity: '0' }, "slow");
     $('#test').animate({ opacity: '0.3' });
@@ -266,11 +268,11 @@ var game = {
     // if statement that controls how long our incorrect answer message, correct answer was message, and correct answer image are shown 
     if (game.currentQuestion === questions.length - 1) {
       // if last question then show results    
-      setTimeout(game.results, 6 * 1000);
+      setTimeout(game.results, 5 * 1000);
     }
     // if not last question then load next question  
     else {
-      setTimeout(game.nextQuestion, 6 * 1000);
+      setTimeout(game.nextQuestion, 5 * 1000);
     }
   },
 
@@ -286,9 +288,9 @@ var game = {
     game.correct++;
 
     // append our "verified" message, "good guess you nerd" message, and our correct answer image to quiz-area div
-    card.html("<h2>Verified!</h2>");
-    card.append("<h3>Good Guess, You Nerd!</h3>");
-    card.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
+    board.html("<h2>Verified!</h2>");
+    board.append("<h3>Good Guess, You Nerd!</h3>");
+    board.append("<img id='test' src='" + questions[game.currentQuestion].image + "' />");
 
     // jquery to call our correct answer image animations
     $('#test').animate({ opacity: '0' }, "slow");
@@ -300,11 +302,11 @@ var game = {
     // if statement that controls how long our "verified" and "good guess" messages and correct answer image are displayed
     if (game.currentQuestion === questions.length - 1) {
       // if last question then show quiz results    
-      setTimeout(game.results, 6 * 1000);
+      setTimeout(game.results, 5 * 1000);
     }
     // if not last question then load next question  
     else {
-      setTimeout(game.nextQuestion, 6 * 1000);
+      setTimeout(game.nextQuestion, 5 * 1000);
     }
   },
 
@@ -334,6 +336,7 @@ $(document).on("click", "#start-over", function () {
 });
 $(document).on("click", ".answer-button", function (e) {
   game.clicked(e);
+  $("#timeSound")[0].pause();
   // show our enterprise image id for our ship animation  
   document.getElementById("ship").style.cssText = "display: block";
   // jquery to call our ship animation  
@@ -344,12 +347,11 @@ $(document).on("click", ".answer-button", function (e) {
 });
 $(document).on("click", "#start", function () {
   // show our enterprise image id for ship animation  
-  document.getElementById("ship").style.cssText = "display: block";
   // jquery to call our ship animation  
   $('#ship').animate({ height: '500px' }, "slow");
   $('#ship').animate({ height: '0px' }, "slow");
   // prepend time remaining to sub-wrapper <h2> id   
-  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>15</span> Seconds</h2>");
+  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-digit'>15</span> Seconds</h2>");
   game.loadQuestion();
   // jquery to call our background noises and our transporter sound  
   $('audio#bgSound')[0].play();
