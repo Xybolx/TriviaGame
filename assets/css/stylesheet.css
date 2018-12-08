@@ -87,15 +87,15 @@ h3 {
   color: ghostwhite;
   text-shadow: 2px 2px blue;
 }
-/*set the background image for quiz-area transporter effect and set text-shadow height and color*/
-#quiz-area {
+/*set the background image for form-area transporter effect and set text-shadow height and color*/
+#form-area {
   background-image: url("../images/mat.gif");
   background-size: cover;
   background-repeat: no-repeat;
   text-shadow: 2px 2px blue;
 }
 
-#quiz-area h2 {
+#form-area h2 {
   margin-top: 50px;
   text-shadow: 2px 2px blue;
 }
