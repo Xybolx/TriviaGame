@@ -1,7 +1,7 @@
 // define id form-area as a variable 
 var board = $("#form-area");
 // define variable countStartNumber as 15
-var countStartNumber = 15;
+var countStartNumber =15;
 
 // question set as an object
 var questions = [{
@@ -122,7 +122,20 @@ var quiz = {
   counter: countStartNumber,
   correct: 0,
   incorrect: 0,
-
+  
+  
+  animate: function () {
+    document.getElementById("ship").style.cssText = "display: block";
+    $('#ship').animate({ height: '500px' });
+    $('#ship').animate({ height: '0px' });
+    $('#test').animate({ opacity: '0' }, "slow");
+    $('#test').animate({ opacity: '0.3' });
+    $('#test').animate({ opacity: '0' }, "slow");
+    $('#test').animate({ opacity: '0.2' });
+    $('#test').animate({ opacity: '0' }, "slow");
+    $('#test').animate({ opacity: '100' });
+    
+  },
   // function to control our countdown
   countdown: function () {
     quiz.counter--;
@@ -130,31 +143,20 @@ var quiz = {
     // if statement that plays a warning sound, turns the counter-digit red, and animates it with 5 seconds left  
     if (quiz.counter === 5) {
       $("#counter-digit").css("color", "red");
-      $("#counter-digit").animate({ fontSize: '2em' });
-      $("#counter-digit").animate({ fontSize: '1em' });
+     
       $("#timeSound")[0].play();
     }
     if (quiz.counter === 0) {
       console.log("TIME UP");
       // turns our counter number back to yellow when it hits zero    
-      $("#counter-digit").css("color", "yellow");
       // show our enterprise image id for ship animation    
-      document.getElementById("ship").style.cssText = "display: block";
       // our jquery to call our ship animation    
-      $('#ship').animate({ height: '500px' });
-      $('#ship').animate({ height: '0px' });
-
       quiz.timeOver();
       // jquery to animate our "you took too long to answer" message    
-      $('#test').animate({ opacity: '0' }, "slow");
-      $('#test').animate({ opacity: '0.3' });
-      $('#test').animate({ opacity: '0' }, "slow");
-      $('#test').animate({ opacity: '0.2' });
-      $('#test').animate({ opacity: '0' }, "slow");
-      $('#test').animate({ opacity: '100' });
     }
+    
   },
-
+  
   // function that loads the first question
   grabQuestion: function () {
     $("#counter-digit").css("color", "yellow");
@@ -170,9 +172,9 @@ var quiz = {
       + "'>" + questions[this.heldQuestion].answers[i] + "</button>");
       
     }
-
+    
   },
-
+  
   // function to change to the next question
   deckQuestion: function () {
     $("#counter-digit").css("color", "yellow");
@@ -181,11 +183,11 @@ var quiz = {
     quiz.heldQuestion++;
     quiz.grabQuestion();
   },
-
+  
   // function to control what happens when a question is not answered within the time limit
   timeOver: function () {
     clearInterval(clock);
-
+    
     $("#counter-digit").html(quiz.counter);
     // jquery to call the sound that plays when a question times out due to no answer    
     $('audio#warnSound')[0].play();
@@ -205,13 +207,13 @@ var quiz = {
       setTimeout(quiz.deckQuestion, 5 * 1000);
     }
   },
-
+  
   // function to control what happens at the end of the quiz
   results: function () {
-
+    
     clearInterval(clock);
-
-
+    
+    
     $("#counter-digit").text(quiz.counter);
     if (quiz.correct >= 15) {
       // jquery that calls our sound that plays when quiz is passed (15 or more correct answers)
@@ -236,7 +238,7 @@ var quiz = {
       board.append("<br><button id='start-over'>Start Over?</button>");
     }
   },
-
+  
   // function that controls what happens when a correct or incorrect answer button is clicked
   clicked: function (e) {
     clearInterval(clock);
@@ -247,17 +249,17 @@ var quiz = {
       this.guessedIncorrectly();
     }
   },
-
+  
   // function that controls what happens when a question is answered incorrectly
   guessedIncorrectly: function () {
     // jquery that calls our sound that plays when a question is answered incorrectly  
     $("#wrongSound")[0].play();
-
+    
     quiz.incorrect++;
-
+    
     clearInterval(clock);
     
-
+    
     // append our inaccurate message, our correct answer was message, and display our correct answer image    
     board.html("<h2>Inaccurate! Inaccurate!</h2>");
     board.append("<h3>The Correct Answer Was: " + questions[quiz.heldQuestion].correctAnswer + "</h3>");
@@ -279,7 +281,7 @@ var quiz = {
       setTimeout(quiz.deckQuestion, 5 * 1000);
     }
   },
-
+  
   // function that controls what happens when a question is answered correctly
   guessedCorrectly: function () {
     // jquery to call the sound that plays when a question is answered correctly  
@@ -287,14 +289,14 @@ var quiz = {
     // show our enterprise image id for ship animation  
     document.getElementById("ship").style.cssText = "display: block";
     clearInterval(clock);
-
+    
     quiz.correct++;
-
+    
     // append our "verified" message, "good guess you nerd" message, and our correct answer image to form-area div
     board.html("<h2>Verified!</h2>");
     board.append("<h3>Good Guess, You Nerd!</h3>");
     board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
-
+    
     // jquery to call our correct answer image animations
     $('#test').animate({ opacity: '0' }, "slow");
     $('#test').animate({ opacity: '0.3' });
@@ -312,15 +314,16 @@ var quiz = {
       setTimeout(quiz.deckQuestion, 5 * 1000);
     }
   },
-
+  
   // function to control resetting the quiz 
   reset: function () {
+    $("#counter-digit").css("color", "yellow");
     this.heldQuestion = 0;
     this.counter = countStartNumber;
     this.correct = 0;
     this.incorrect = 0;
     this.grabQuestion();
-
+    
   }
 };
 
@@ -330,10 +333,10 @@ $(document).on("click", "#start-over", function () {
   quiz.reset();
   // show our enterprise image id for our ship animation  
  document.getElementById("ship").style.cssText = "display: block";
-  // jquery to call our enterprise ship animation  
-  $('#ship').animate({ height: '500px' }, "slow");
-  $('#ship').animate({ height: '0px' }, "slow");
-  // jquery to call our transporter sound  
+ // jquery to call our enterprise ship animation  
+ $('#ship').animate({ height: '500px' }, "slow");
+ $('#ship').animate({ height: '0px' }, "slow");
+ // jquery to call our transporter sound  
   $('#startSound')[0].play();
   $('#bgSound')[0].play();
 });
