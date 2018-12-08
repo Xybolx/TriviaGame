@@ -110,6 +110,8 @@ var questions = [{
 document.getElementById('ship').style.cssText = "display: none";
 
 
+
+
 // variable that will hold the setInterval
 var clock;
 // define our whole quiz as an object
@@ -155,6 +157,7 @@ var quiz = {
 
   // function that loads the first question
   grabQuestion: function () {
+    $("#counter-digit").css("color", "yellow");
     // set our countdown interval to one second  
     clock = setInterval(quiz.countdown, 1000);
     // remove our start button from form-area div
@@ -283,7 +286,6 @@ var quiz = {
     $("#winSound")[0].play();
     // show our enterprise image id for ship animation  
     document.getElementById("ship").style.cssText = "display: block";
-
     clearInterval(clock);
 
     quiz.correct++;
@@ -327,7 +329,7 @@ var quiz = {
 $(document).on("click", "#start-over", function () {
   quiz.reset();
   // show our enterprise image id for our ship animation  
-  document.getElementById("ship").style.cssText = "display: block";
+ document.getElementById("ship").style.cssText = "display: block";
   // jquery to call our enterprise ship animation  
   $('#ship').animate({ height: '500px' }, "slow");
   $('#ship').animate({ height: '0px' }, "slow");
@@ -338,7 +340,8 @@ $(document).on("click", "#start-over", function () {
 $(document).on("click", ".answer-button", function (e) {
   quiz.clicked(e);
   $("#timeSound")[0].pause();
-  // show our enterprise image id for our ship animation  
+  // show our enterprise image id for our ship animation
+  
   document.getElementById("ship").style.cssText = "display: block";
   // jquery to call our ship animation  
   $('#ship').animate({ height: '500px' }, "slow");
@@ -347,13 +350,14 @@ $(document).on("click", ".answer-button", function (e) {
   $('#startSound')[0].play();
 });
 $(document).on("click", "#start", function () {
-  // show our enterprise image id for ship animation  
+    
   // jquery to call our ship animation  
   $('#ship').animate({ height: '500px' }, "slow");
   $('#ship').animate({ height: '0px' }, "slow");
-  // prepend time remaining to pre-form <h2> id   
+  // prepend time remaining to pre-form <h2> id
   $("#pre-form").prepend("<h2>Time Remaining: <span id='counter-digit'>15</span> Seconds</h2>");
   quiz.grabQuestion();
+  
   // jquery to call our background noises and our transporter sound  
   $('#bgSound')[0].play();
   $('#startSound')[0].play();
