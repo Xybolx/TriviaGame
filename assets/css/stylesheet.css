@@ -15,7 +15,7 @@ body {
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
   
 }
-/*set the div that holds our quiz content to make it more mobile friendly*/
+
 #wrapper {
   width: 960px;
   min-height: 80%;
@@ -32,7 +32,7 @@ body {
   top: 20%;
   
 }
-/*set the width of our buttons to be more mobile friendly, set font color, and give them a background image*/
+
 button {
   display: block;
   width: 960px;
