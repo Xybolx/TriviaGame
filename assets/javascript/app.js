@@ -1,3 +1,4 @@
+$(document).ready(function() {
 // define id form-area as a variable 
 var board = $("#form-area");
 // define variable countStartNumber as 15
@@ -154,7 +155,7 @@ transPort: function() {
       $("#timeSound")[0].play();
     }
     if (quiz.counter === 0) {
-      quiz.transPort();
+      
       console.log("TIME UP");
     
           // turns our counter number back to yellow when it hits zero    
@@ -202,12 +203,12 @@ quiz.timeOver();
   
   timeOver: function () {
     
-  
+    
     clearInterval(clock);
     
-
-
-
+    
+    
+    
     $("#counter-digit").html(quiz.counter);
     // jquery to call the sound that plays when a question times out due to no answer    
     $('audio#warnSound')[0].play();
@@ -215,6 +216,7 @@ quiz.timeOver();
     board.html("<h2>Up your shaft! You took too long to answer!</h2>");
     board.append("<h3>The Correct Answer was: " + questions[this.heldQuestion].correctAnswer);
     board.append("<img id='test' src='" + questions[this.heldQuestion].image + "' />");
+    quiz.transPort();
     // jquery to call our transporter sound  
     // if statement to control how long our "you took too long" message appears in form-area div 
     if (quiz.heldQuestion === questions.length - 1) {
@@ -275,7 +277,7 @@ quiz.timeOver();
     // jquery that calls our sound that plays when a question is answered incorrectly  
     $("#wrongSound")[0].play();
 
-    quiz.transPort();
+    //quiz.transPort();
 
 
     
@@ -296,7 +298,7 @@ quiz.timeOver();
     board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
     // jquery to call our incorrect answer image animation
     
-    quiz.animate();
+    //quiz.animate();
     // if statement that controls how long our incorrect answer message, correct answer was message, and correct answer image are shown 
     if (quiz.heldQuestion === questions.length - 1) {
       // if last question then show results    
@@ -313,13 +315,13 @@ quiz.timeOver();
     // jquery to call the sound that plays when a question is answered correctly  
     $("#winSound")[0].play();
     // show our enterprise image id for ship animation  
-   quiz.animate();
+   
     clearInterval(clock);
     
     quiz.correct++;
     
 
-    quiz.transPort();
+    //quiz.transPort();
 
 
     // append our "verified" message, "good guess you nerd" message, and our correct answer image to form-area div
@@ -362,10 +364,10 @@ $(document).on("click", "#start-over", function () {
 
 
   // show our enterprise image id for our ship animation  
- document.getElementById("ship").style.cssText = "display: block";
+ //document.getElementById("ship").style.cssText = "display: block";
  // jquery to call our enterprise ship animation  
- $('#ship').animate({ height: '500px' }, "slow");
- $('#ship').animate({ height: '0px' }, "slow");
+ //$('#ship').animate({ height: '500px' }, "slow");
+ //$('#ship').animate({ height: '0px' }, "slow");
  // jquery to call our transporter sound  
   $('#startSound')[0].play();
   $('#bgSound')[0].play();
@@ -394,8 +396,11 @@ $(document).on("click", "#start", function () {
   // jquery to call our background noises and our transporter sound  
  
   $('#bgSound')[0].play();
-  $('#startSound')[0].play();
+  //$('#startSound')[0].play();
 });
+
+});
+
 
 
 
