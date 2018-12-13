@@ -158,8 +158,8 @@ transPort: function() {
       
       console.log("TIME UP");
     
-          // turns our counter number back to yellow when it hits zero    
-      // show our enterprise image id for ship animation    
+             
+         
 
       
 quiz.animate();
