@@ -13,7 +13,8 @@ body {
   color: rgb(253, 243, 98);
   /*set our background image for the body*/
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
-  
+  /* background: url("../images/screen2.jpg"); */
+  background-size: cover;
 }
 
 #form-wrapper {
@@ -33,7 +34,7 @@ body {
   
 }
 
-button {
+button, #s-button {
   display: block;
   width: 960px;
   height: 95px;
@@ -98,5 +99,30 @@ h3 {
 #form-area h2 {
   margin-top: 50px;
   text-shadow: 2px 2px blue;
+}
+
+table {
+  background: url("../images/field.gif");
+  background-size: cover;
+  background-attachment: fixed;
+  color: rgb(253, 243, 98);
+  text-shadow: 2px 2px blue;
+}
+
+#admiral {
+  padding-top: 40px;
+  
+}
+
+td {
+  /* text-align: center; */
+  /* background: url("../images/wrapper-bg.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; */
+}
+
+#pass {
+  text-align: center;
 }
 
