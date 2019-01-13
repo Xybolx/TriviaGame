@@ -102,11 +102,13 @@ h3 {
 }
 
 table {
-  background: url("../images/field.gif");
-  background-size: cover;
-  background-attachment: fixed;
+  background: url("../images/badge.png");
+  background-size: contain;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
   color: rgb(253, 243, 98);
   text-shadow: 2px 2px blue;
+  font-size: 2vw;
 }
 
 #admiral {
