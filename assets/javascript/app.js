@@ -290,7 +290,7 @@ transPort: function() {
     
     
     $("#counter-digit").text(quiz.counter);
-    if (quiz.correct >= 15) {
+    if (quiz.correct >= 15 ) {
       document.getElementById('initials').style.cssText = "display: block";
       // jquery that calls our sound that plays when quiz is passed (15 or more correct answers)
           $("#passSound")[0].play();
@@ -440,18 +440,18 @@ $(document).on("click", ".answer-button", function (e) {
 });
 
 $("#s-button").on("click", function() {
-  initials = $("#initials-input").val().trim();
+  var initials = $("#initials-input").val().trim();
   console.log(initials);
   
   var correct = quiz.correct;
   console.log(correct);
-  
   database.ref("/scores").push({
       initials: initials,      
       correct: correct
       })
-
-      
+  
+  
+  
   
   
 });
