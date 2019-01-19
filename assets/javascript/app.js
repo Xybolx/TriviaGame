@@ -18,7 +18,7 @@ $(document).ready(function() {
   database.ref("/scores").on("child_added", function(snapChild){
     console.log(snapChild.val().correct);
     console.log(snapChild.val().initials);
-    if (snapChild.val().correct >= 15) {
+    if (snapChild.val().correct >= 20) {
     var row = $("<tr>");
     var initialsTd = $("<td>").text(snapChild.val().initials);
     var correctTd = $("<td>").text(snapChild.val().correct);
@@ -227,6 +227,8 @@ transPort: function() {
     // set our countdown interval to one second  
     clock = setInterval(quiz.countdown, 1000);
     // remove our start button from form-area div
+    $("#admiral").hide();
+    $("#perfect").hide();
     $("#start").remove();
     // put the first question in our form-area div 
     board.html("<h2>" + questions[this.heldQuestion].question + "</h2>");
@@ -281,6 +283,8 @@ transPort: function() {
   
   // function to control what happens at the end of the quiz
   results: function () {
+    $("#perfect").show();
+    $("#admiral").show();
 
     
     
@@ -290,12 +294,12 @@ transPort: function() {
     
     
     $("#counter-digit").text(quiz.counter);
-    if (quiz.correct >= 15 ) {
+    if (quiz.correct >= 20 ) {
       document.getElementById('initials').style.cssText = "display: block";
       // jquery that calls our sound that plays when quiz is passed (15 or more correct answers)
           $("#passSound")[0].play();
           // append passed message, results, and our start over? button to our quiz area div
-          board.html("<h2>PASSED!: Enter Your Initials Below!</h2>");
+          board.html("<h2>PERFECT SCORE!: Enter Your Initials Below!</h2>");
           board.append("<h3>Correct Answers: " + quiz.correct + "</h3>");
           board.append("<h3>Incorrect Answers: " + quiz.incorrect + "</h3>");
           board.append("<h3>Unanswered: " + (questions.length - (quiz.incorrect + quiz.correct)) + "</h3>");
