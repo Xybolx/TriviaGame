@@ -1,9 +1,9 @@
 /* import our font from google fonts */
 @import url('https://fonts.googleapis.com/css?family=Voltaire');
 
-html,
-body {
+html {
   height: 100%;
+  position: relative;
   
 }
 
@@ -15,6 +15,7 @@ body {
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/moving-stars-on-black-background_41x3vg3x__F0000.png");
   /* background: url("../images/screen2.jpg"); */
   background-size: cover;
+  background-attachment: scroll;
 }
 
 #form-wrapper {
@@ -123,6 +124,7 @@ table {
 }
 
 td {
+  text-transform: uppercase;
   /* text-align: center; */
   /* background: url("../images/wrapper-bg.jpg");
   background-size: contain;

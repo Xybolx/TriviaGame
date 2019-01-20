@@ -28,6 +28,27 @@ $(document).ready(function() {
   
   });
 
+  $('#initials-input').on('keyup', function () {
+    var input = $(this);
+    var re = /^[A-Za-z]{3}$/;
+    var is_initials = re.test(input.val());
+    if (is_initials) {
+        input.removeClass("invalid").addClass("valid");
+        $("#s-button").show();
+        
+        
+        
+    }
+    else {
+        input.removeClass("valid").addClass("invalid");
+        $("#s-button").hide();
+      
+        
+        
+    }
+    
+});
+
 
 // define id form-area as a variable 
 var board = $("#form-area");
