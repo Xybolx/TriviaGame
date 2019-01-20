@@ -143,13 +143,13 @@ var questions = [{
   image: "assets/images/enterprise2.gif"
 }, 
 {
-  question: "During a battle with the Enterprise in the episode \"Balance of Terror\", the commander of the Romulan Bird of Prey does what out of desperation?",
+  question: "In the episode \"Balance of Terror\", the commander of the Romulan Bird of Prey does what out of desperation?",
   answers: ["Calls for a truce", "Launches a nuclear weapon", "Calls for red alert", "Eats a sandwich"],
   correctAnswer: "Launches a nuclear weapon",
   image: "assets/images/mushroom_cloud.gif"
 }, 
 {
-  question: "Zefram Cochrane was the inventor of warp drive. In what episode did he first appear along with his companion?",
+  question: "Zefram Cochrane was the inventor of warp drive. In what episode did he first appear?",
   answers: ["\"Space Stuff\"", "\"Mirror, Mirror\"", "\"Our Yesterdays\"", "\"Metamorphosis\""],
   correctAnswer: "\"Metamorphosis\"",
   image: "assets/images/cochrane.gif"
@@ -264,8 +264,8 @@ transPort: function() {
     // jquery to call the sound that plays when a question times out due to no answer    
     $('audio#warnSound')[0].play();
     // append the form-area div to display our "you took too long" message and display the correct answer
-    board.html("<h2>Up your shaft! You took too long to answer!</h2>");
-    board.append("<h3>The Correct Answer was: " + questions[this.heldQuestion].correctAnswer);
+    board.html("<h2>You took too long to answer!</h2>");
+    board.append("<h3>Correct Answer: " + questions[this.heldQuestion].correctAnswer);
     board.append("<img id='test' src='" + questions[this.heldQuestion].image + "' />");
     quiz.transPort();
     // jquery to call our transporter sound  
@@ -352,7 +352,7 @@ transPort: function() {
     
     // append our inaccurate message, our correct answer was message, and display our correct answer image    
     board.html("<h2>Inaccurate! Inaccurate!</h2>");
-    board.append("<h3>The Correct Answer Was: " + questions[quiz.heldQuestion].correctAnswer + "</h3>");
+    board.append("<h3>Correct Answer: " + questions[quiz.heldQuestion].correctAnswer + "</h3>");
     board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
     // jquery to call our incorrect answer image animation
     
