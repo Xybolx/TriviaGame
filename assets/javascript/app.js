@@ -207,6 +207,8 @@ $(document).ready(function () {
       $('#test').animate({ opacity: '0' }, "slow");
       $('#test').animate({ opacity: '0.2' });
       $('#test').animate({ opacity: '0' }, "slow");
+      $('#test').animate({ opacity: '0.2' }, "slow");
+      $('#test').animate({ opacity: '0' }, "slow");
       $('#test').animate({ opacity: '100' });
 
 
@@ -293,11 +295,11 @@ $(document).ready(function () {
       // if statement to control how long our "you took too long" message appears in form-area div 
       if (quiz.heldQuestion === questions.length - 1) {
         // show quiz results if last question    
-        setTimeout(quiz.results, 5 * 1000);
+        setTimeout(quiz.results, 6 * 1000);
       }
       // show next question if not last question  
       else {
-        setTimeout(quiz.deckQuestion, 5 * 1000);
+        setTimeout(quiz.deckQuestion, 6 * 1000);
       }
 
     },
@@ -381,11 +383,11 @@ $(document).ready(function () {
       // if statement that controls how long our incorrect answer message, correct answer was message, and correct answer image are shown 
       if (quiz.heldQuestion === questions.length - 1) {
         // if last question then show results    
-        setTimeout(quiz.results, 5 * 1000);
+        setTimeout(quiz.results, 6 * 1000);
       }
       // if not last question then load next question  
       else {
-        setTimeout(quiz.deckQuestion, 5 * 1000);
+        setTimeout(quiz.deckQuestion, 6 * 1000);
       }
     },
 
@@ -406,17 +408,17 @@ $(document).ready(function () {
       // append our "verified" message, "good guess you nerd" message, and our correct answer image to form-area div
       board.html("<h2>Verified!</h2>");
       board.append("<h3>Good Guess, You Nerd!</h3>");
-      board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
+      board.append("<img class='img-fluid' id='test' src='" + questions[quiz.heldQuestion].image + "' />");
 
       // jquery to call our correct answer image animations
       // if statement that controls how long our "verified" and "good guess" messages and correct answer image are displayed
       if (quiz.heldQuestion === questions.length - 1) {
         // if last question then show quiz results    
-        setTimeout(quiz.results, 5 * 1000);
+        setTimeout(quiz.results, 6 * 1000);
       }
       // if not last question then load next question  
       else {
-        setTimeout(quiz.deckQuestion, 5 * 1000);
+        setTimeout(quiz.deckQuestion, 6 * 1000);
       }
     },
 

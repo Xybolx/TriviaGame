@@ -111,6 +111,7 @@ h3 {
 table {
   background: url("../images/badge.png");
   background-size: contain;
+  background-position: center; 
   background-attachment: scroll;
   background-repeat: no-repeat;
   color: rgb(253, 243, 98);
@@ -126,7 +127,7 @@ table {
 td {
   text-transform: uppercase;
   /* text-align: center; */
-  /* background: url("../images/wrapper-bg.jpg");
+  /* background: url("../images/badge.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center; */
@@ -142,5 +143,17 @@ td {
 
 img {
   margin: 30px;
+}
+
+#test {
+  min-height: 300px;
+  max-height: 400px;
+  min-width: 400px;
+  max-width: 500px;
+  border-radius: 25%;  
+}
+
+.jumbotron {
+  background: transparent;
 }
 

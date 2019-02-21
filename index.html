@@ -83,10 +83,10 @@
 
 
   <!--our html skeleton-->
-  <div id="form-wrapper">
-    <h1>STAR TREK TRIVIA</h1>
-  <!--our enterprise image id to be referenced on our app.js page (hidden in <h1> before and after animation)-->  
-    <div id="pre-form">
+  <div class="jumbotron jumbotron-fluid text-center" id="form-wrapper">
+      <h1>STAR TREK TRIVIA</h1>
+    <!--our enterprise image id to be referenced on our app.js page (hidden in <h1> before and after animation)-->  
+      <div class="jumbotron jumbotron-fluid" id="pre-form">
         <img id="ship" src="assets/images/enterprise.png" />
       <div id="form-area">
         <button id="start">Start</button>
@@ -100,6 +100,8 @@
          
           <button id="s-button" type="submit" class="">Submit</button>
         </form>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="table-responsive">
       <table id="perfect" class="table table-borderless">
           <thead>
             <tr>
@@ -115,6 +117,8 @@
             
           </tbody>
         </table>
+        </div>
+      </div>
         
     </div>
   </div>
