@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready( () => {
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAHjbtsCXA2QXkaLghiKa0SP7bqOzWA9c8",
@@ -11,11 +11,7 @@ $(document).ready(function () {
   firebase.initializeApp(config);
   var database = firebase.database();
 
-
-
-
-
-  database.ref("/scores").on("child_added", function (snapChild) {
+  database.ref("/scores").on("child_added", snapChild => {
     console.log(snapChild.val().correct);
     console.log(snapChild.val().initials);
     if (snapChild.val().correct >= 20) {
@@ -25,36 +21,26 @@ $(document).ready(function () {
       row.append(initialsTd).append(correctTd);
       $("tbody").append(row);
     }
-
   });
 
-  $('#initials-input').on('keyup', function () {
+  $('#initials-input').on('keyup', () => {
     var input = $(this);
     var re = /^[A-Za-z]{3}$/;
     var is_initials = re.test(input.val());
     if (is_initials) {
       input.removeClass("invalid").addClass("valid");
       $("#s-button").show();
-
-
-
     }
     else {
       input.removeClass("valid").addClass("invalid");
       $("#s-button").hide();
-
-
-
     }
-
   });
-
 
   // define id form-area as a variable 
   var board = $("#form-area");
   // define variable countStartNumber as 15
   var countStartNumber = 15;
-
   // question set as an object
   var questions = [{
     question: "What is the name of the starship commanded by Cpt. James T. Kirk?",
@@ -194,12 +180,12 @@ $(document).ready(function () {
     correct: 0,
     incorrect: 0,
 
-
     animate: function () {
       document.getElementById("ship").style.cssText = "display: block";
       $('#ship').animate({ height: '500px' }, "slow");
       $('#ship').animate({ height: '0px' }, "slow");
     },
+
     transPort: function () {
       $('#startSound')[0].play();
       $('#test').animate({ opacity: '0' }, "slow");
@@ -210,12 +196,8 @@ $(document).ready(function () {
       $('#test').animate({ opacity: '0.2' }, "slow");
       $('#test').animate({ opacity: '0' }, "slow");
       $('#test').animate({ opacity: '100' });
-
-
-
-
-
     },
+
     // function to control our countdown
     countdown: function () {
       quiz.counter--;
@@ -223,25 +205,12 @@ $(document).ready(function () {
       // if statement that plays a warning sound, turns the counter-digit red, and animates it with 5 seconds left  
       if (quiz.counter === 5) {
         $("#counter-digit").css("color", "red");
-
         $("#timeSound")[0].play();
       }
       if (quiz.counter === 0) {
-
-        console.log("TIME UP");
-
-
-
-
-
         quiz.animate();
-
-        // our jquery to call our ship animation    
-
-        quiz.timeOver();
-        // jquery to animate our "you took too long to answer" message    
+        quiz.timeOver(); 
       }
-
     },
 
     // function that loads the first question
@@ -259,9 +228,7 @@ $(document).ready(function () {
       for (var i = 0; i < questions[this.heldQuestion].answers.length; i++) {
         board.append("<button class='answer-button' id='button' data-name='" + questions[this.heldQuestion].answers[i]
           + "'>" + questions[this.heldQuestion].answers[i] + "</button>");
-
       }
-
     },
 
     // function to change to the next question
@@ -274,14 +241,9 @@ $(document).ready(function () {
     },
 
     // function to control what happens when a question is not answered within the time limit
-
     timeOver: function () {
 
-
       clearInterval(clock);
-
-
-
 
       $("#counter-digit").html(quiz.counter);
       // jquery to call the sound that plays when a question times out due to no answer    
@@ -290,8 +252,7 @@ $(document).ready(function () {
       board.html("<h2>You took too long to answer!</h2>");
       board.append("<h3>Correct Answer: " + questions[this.heldQuestion].correctAnswer);
       board.append("<img id='test' src='" + questions[this.heldQuestion].image + "' />");
-      quiz.transPort();
-      // jquery to call our transporter sound  
+      quiz.transPort(); 
       // if statement to control how long our "you took too long" message appears in form-area div 
       if (quiz.heldQuestion === questions.length - 1) {
         // show quiz results if last question    
@@ -301,7 +262,6 @@ $(document).ready(function () {
       else {
         setTimeout(quiz.deckQuestion, 6 * 1000);
       }
-
     },
 
     // function to control what happens at the end of the quiz
@@ -309,12 +269,7 @@ $(document).ready(function () {
       $("#perfect").show();
       $("#admiral").show();
 
-
-
-
-
       clearInterval(clock);
-
 
       $("#counter-digit").text(quiz.counter);
       if (quiz.correct >= 20) {
@@ -355,31 +310,18 @@ $(document).ready(function () {
 
     // function that controls what happens when a question is answered incorrectly
     guessedIncorrectly: function () {
-      // jquery that calls our sound that plays when a question is answered incorrectly  
+    // jquery that calls our sound that plays when a question is answered incorrectly  
       $("#nomad")[0].play();
-
-      //quiz.transPort();
-
-
-
 
       quiz.incorrect++;
 
       clearInterval(clock);
 
-
-
-
-
-
-
       // append our inaccurate message, our correct answer was message, and display our correct answer image    
       board.html("<h2>You Are In Error!</h2>");
       board.append("<h3>Correct Answer: " + questions[quiz.heldQuestion].correctAnswer + "</h3>");
       board.append("<img id='test' src='" + questions[quiz.heldQuestion].image + "' />");
-      // jquery to call our incorrect answer image animation
-
-      //quiz.animate();
+    
       // if statement that controls how long our incorrect answer message, correct answer was message, and correct answer image are shown 
       if (quiz.heldQuestion === questions.length - 1) {
         // if last question then show results    
@@ -395,22 +337,16 @@ $(document).ready(function () {
     guessedCorrectly: function () {
       // jquery to call the sound that plays when a question is answered correctly  
       $("#winSound")[0].play();
-      // show our enterprise image id for ship animation  
 
       clearInterval(clock);
 
       quiz.correct++;
-
-
-      //quiz.transPort();
-
 
       // append our "verified" message, "good guess you nerd" message, and our correct answer image to form-area div
       board.html("<h2>Verified!</h2>");
       board.append("<h3>Good Guess, You Nerd!</h3>");
       board.append("<img class='img-fluid' id='test' src='" + questions[quiz.heldQuestion].image + "' />");
 
-      // jquery to call our correct answer image animations
       // if statement that controls how long our "verified" and "good guess" messages and correct answer image are displayed
       if (quiz.heldQuestion === questions.length - 1) {
         // if last question then show quiz results    
@@ -430,43 +366,27 @@ $(document).ready(function () {
       this.correct = 0;
       this.incorrect = 0;
       this.grabQuestion();
-
     }
   };
 
-
   // all of our on click events
-  $(document).on("click", "#start-over", function () {
+  $(document).on("click", "#start-over", () => {
     quiz.reset();
-
     // show our enterprise image id for our ship animation 
     quiz.animate();
-
-
-
-    // show our enterprise image id for our ship animation  
-    //document.getElementById("ship").style.cssText = "display: block";
-    // jquery to call our enterprise ship animation  
-    //$('#ship').animate({ height: '500px' }, "slow");
-    //$('#ship').animate({ height: '0px' }, "slow");
     // jquery to call our transporter sound  
     $('#startSound')[0].play();
     $('#bgSound')[0].play();
-
   });
-  $(document).on("click", ".answer-button", function (e) {
+
+  $(document).on("click", ".answer-button", (e) => {
     quiz.clicked(e);
     quiz.transPort();
     $("#timeSound")[0].pause();
-    // show our enterprise image id for our ship animation
     quiz.animate();
-
-    // jquery to call our ship animation  
-    // jquery to call our transporter sound  
-
   });
 
-  $("#s-button").on("click", function () {
+  $("#s-button").on("click", () => {
     var initials = $("#initials-input").val().trim();
     console.log(initials);
     var correct = quiz.correct;
@@ -475,30 +395,18 @@ $(document).ready(function () {
       initials: initials,
       correct: correct
     })
-
-
-
-
-
   });
 
-
-
-  $(document).on("click", "#start", function () {
-
+  $(document).on("click", "#start", () => {
     // jquery to call our ship animation  
     quiz.animate();
     // prepend time remaining to pre-form <h2> id
     $("#pre-form").prepend("<h2>Time Remaining: <span id='counter-digit'>15</span> Seconds</h2>");
     quiz.grabQuestion();
     quiz.transPort();
-
-    // jquery to call our background noises and our transporter sound  
-
+    // jquery to call our background noises
     $('#bgSound')[0].play();
-    //$('#startSound')[0].play();
   });
-
 });
 
 
